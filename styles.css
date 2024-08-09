@@ -1,0 +1,138 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: radial-gradient(circle, #f5f7fa, #c3cfe2);
+}
+
+.container {
+    text-align: center;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 420px;
+    position: relative;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 2.4em;
+    color: #333;
+    font-weight: 600;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.cell {
+    width: 100%;
+    height: 100px;
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3em;
+    font-weight: 700;
+    color: #333;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    position: relative;
+}
+
+
+.cell::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transition: opacity 0.3s;
+    border-radius: 10px;
+}
+
+.cell.clicked::after {
+    opacity: 1;
+}
+
+
+.cell:hover {
+    background: #e0e0e0;
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    padding: 12px 24px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background-color: #007bff;
+    color: #fff;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+button:active {
+    background-color: #004494;
+}
+
+
+
+#status {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-top: 20px;
+    color: #333;
+    text-transform: uppercase;
+    position: relative;
+    padding: 10px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #f0f8ff, #e6e6fa);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeInUp 1s ease-in-out;
+    overflow: hidden;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#status.win {
+    color: #2ecc71;
+    background: linear-gradient(135deg, #d4efdf, #a9dfbf);
+}
+
+#status.draw {
+    color: #f39c12;
+    background: linear-gradient(135deg, #fdfd96, #f7dc6f);
+}
